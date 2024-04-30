@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre Site Web</title>
+  <!-- Liens vers Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Liens vers Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Votre fichier CSS personnalisé -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Ajouter du CSS personnalisé */
+    .navbar-brand {
+      margin-right: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-orange" style="height: 60px;">
+    <a class="navbar-brand" href="#">
+      <img src="./images/parfum_Plan de travail 1.png" alt="Logo" style="height: 40px; filter: brightness(0.8); color: white;"> <!-- Utiliser la couleur blanche -->
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>  
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto"> <!-- Utilisation de mr-auto pour aligner les éléments à gauche -->
+        <li class="nav-item active">
+          <a class="nav-link" style="color: white; font-weight: bold;" href="index.html">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white; font-weight: bold;" href="./pages/parfum20.html">Parfum 20ML</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white; font-weight: bold;" href="./pages/parfum30.html">Parfum 30ML</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white; font-weight: bold;" href="./pages/parfum50.html">Parfum 50ML</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Icône du panier -->
+    <a class="nav-link" style="color: white; font-weight: bold;" href="#"><i class="fas fa-shopping-cart"></i></a>
+  </nav>
+
+  <!-- Slider -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="./images/slide1.jpg" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="./images/slide2.jpg" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="./images/slide3.jpg" alt="Third slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2>Nos Vidéos</h2>
+      </div>
+    </div>
+  </div>
+<!-- Vidéos -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="embed-responsive embed-responsive-16by9">
+        <video id="video1" class="embed-responsive-item" controls>
+          <source src="./images/tg (3).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="embed-responsive embed-responsive-16by9">
+        <video id="video2" class="embed-responsive-item" controls>
+          <source src="./images/td.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="embed-responsive embed-responsive-16by9">
+        <video id="video3" class="embed-responsive-item" controls>
+          <source src="./images/tg (1).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="embed-responsive embed-responsive-16by9">
+        <video id="video4" class="embed-responsive-item" controls>
+          <source src="./images/tg (4).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var videos = document.querySelectorAll('video');
+
+  function isVideoInView(video) {
+    var rect = video.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  function startAutoPlay() {
+    videos.forEach(function (video, index) {
+      if (isVideoInView(video)) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  }
+
+  function playNextVideo(currentVideo) {
+    var currentIndex = Array.from(videos).indexOf(currentVideo);
+    if (currentIndex < videos.length - 1) {
+      videos[currentIndex + 1].play();
+    }
+  }
+
+  // Ecouter les événements de fin de lecture de chaque vidéo
+  videos.forEach(function (video) {
+    video.addEventListener('ended', function () {
+      playNextVideo(video);
+    });
+  });
+
+  window.addEventListener('scroll', startAutoPlay);
+});
+</script>
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Nos Produits</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Produits -->
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover card-with-decoration"> <!-- Ajoutez la classe personnalisée -->
+        <div class="corner-decoration"></div> <!-- Dessin dans le coin supérieur gauche -->
+        <img class="card-img-top" src="./images/alien.jpg" alt="Produit 1">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 1.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Répétez cette structure pour d'autres produits -->
+
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover card-with-decoration">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/ameer.jpg" alt="Produit 2">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 2.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ajoutez les autres cartes ici -->
+
+    <!-- Carte 3 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/azzoro.jpg" alt="Produit 3">
+        <div class="card-body">
+          <h5 class="card-title">6000FCFA</h5>
+          <p class="card-text">Description du produit 3.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 4 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/bleu.jpg" alt="Produit 4">
+        <div class="card-body">
+          <h5 class="card-title">4000FCFA</h5>
+          <p class="card-text">Description du produit 4.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 5 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/bois-d'ardent.jpg" alt="Produit 5">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 5.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 6 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/chanel.jpg" alt="Produit 6">
+        <div class="card-body">
+          <h5 class="card-title">6000FCFA</h5>
+          <p class="card-text">Description du produit 6.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 7 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/dior.jpg" alt="Produit 7">
+        <div class="card-body">
+          <h5 class="card-title">4000FCFA</h5>
+          <p class="card-text">Description du produit 7.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 8 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/dissel.jpg" alt="Produit 8">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 8.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 9 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/sculpteur.jpg" alt="Produit 9">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 9.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 10 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/syperm.jpg" alt="Produit 10">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 10.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 11 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/taj.jpg" alt="Produit 11">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 11.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 12 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/tress.jpg" alt="Produit 12">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 12.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 13 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/ultra.jpg" alt="Produit 13">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 13.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 14 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/vanill.jpg" alt="Produit 14">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 14.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 15 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/way.jpg" alt="Produit 15">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 15.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 16 -->
+    <div class="col-md-3 mb-4">
+      <div class="card card-hover">
+        <div class="corner-decoration"></div>
+        <img class="card-img-top" src="./images/sauvage.jpg" alt="Produit 16">
+        <div class="card-body">
+          <h5 class="card-title">3000FCFA</h5>
+          <p class="card-text">Description du produit 16.</p>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <!-- Footer -->
+<footer class="footer bg-orange text-white text-center py-3 mt-5"> <!-- Ajout de la marge haute -->
+  <div class="container">
+    <span style="font-weight: bold;">TEL: 773588475/ 703362964</span>
+
+  </div>
+</footer>
+
+  <!-- Liens vers Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Icônes Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+/* styles.css */
+
+/* Style du footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFA500; /* Couleur orange pour le footer */
+    color: white; /* Texte en blanc */
+  }
+  
+  /* Couleur orange pour la barre de navigation */
+  .navbar {
+    background-color: #FFA500;
+  }
+  
+  /* Bouton Ajouter au panier */
+  .btn-primary {
+    background-color: #FFA500; /* Couleur orange pour le bouton */
+    border-color: #FFA500; /* Couleur de la bordure du bouton */
+  }
+  
+  /* Lorsque le bouton est survolé */
+  .btn-primary:hover {
+    background-color: #FFD700; /* Couleur dorée au survol */
+    border-color: #FFD700;
+  }
+  
+  /* Lorsque le bouton est activé */
+  .btn-primary:active {
+    background-color: #FFD700; /* Couleur dorée lorsque le bouton est cliqué */
+    border-color: #FFD700;
+  }
+
+  /* Style CSS pour l'effet hover */
+.card-img-container {
+  position: relative;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Couleur de l'overlay */
+  opacity: 0; /* L'overlay est initialement transparent */
+  transition: opacity 0.3s ease; /* Transition en douceur */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card-img-container:hover .overlay {
+  opacity: 1; /* L'overlay devient opaque au survol */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Style CSS pour l'effet de rebondissement et l'ombre portée */
+.card-hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Ajout de la transition pour la transformation et l'ombre portée */
+}
+
+.card-hover:hover {
+  transform: translateY(-5px); /* Translation vers le haut */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.navbar {
+  height: 60px; /* ou toute autre valeur appropriée */
+}
+.card-with-decoration {
+  position: relative; /* Position relative pour que la décoration soit relative à la carte */
+}
+
+.corner-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px; /* Largeur du dessin */
+  height: 50px; /* Hauteur du dessin */
+  background-color: #ff0000; /* Couleur de fond du dessin */
+  clip-path: polygon(0% 0%, 0% 100%, 100% 0%); /* Triangle dans le coin supérieur gauche */
+}
+
+
+
+
